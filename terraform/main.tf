@@ -83,7 +83,7 @@ resource "azurerm_key_vault_secret" "synapse" {
 }
 
 resource "azurerm_synapse_workspace" "synapse" {
-  name                                 = azurerm_resource_group.synapse.name
+  name                                 = azurerm_storage_account.synapse.name
   resource_group_name                  = azurerm_resource_group.synapse.name
   location                             = azurerm_resource_group.synapse.location
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.synapse.id
