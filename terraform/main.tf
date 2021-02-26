@@ -96,3 +96,14 @@ resource "azurerm_synapse_workspace" "synapse" {
     object_id = data.azurerm_client_config.current.object_id
   }
 }
+
+data "http" "client_ip" {
+  url = "http://ipv4.icanhazip.com"
+}
+
+resource "azurerm_synapse_firewall_rule" "synapse" {
+  name                 = "AllowClientIp"
+  synapse_workspace_id = azurerm_synapse_workspace.synapse.id
+  start_ip_address     = "${chomp(data.http.client_ip.body)}"
+  end_ip_address       = "${chomp(data.http.client_ip.body)}"
+}
