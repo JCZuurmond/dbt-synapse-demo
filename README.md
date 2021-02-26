@@ -1,7 +1,7 @@
 # Data Build Tool Azure Synapse Analytics Demo
 
 This repository demos how to use data build tool ([dbt]) with [Azure Synapse
-Analytics]. In this repository we recreate the [jaffle-shop] tutorial with a
+Analytics]. In this repository we recreate the [jaffle shop] tutorial with a
 Synapse data warehouse as backend.
 
 # Prerequisites and installation overview
@@ -16,8 +16,8 @@ links for installation instructions:
 - [Azure cli] : 
   The command line interface for the [Azure cloud].
 - [Terraform cli] : 
-  The command line interface to [Terraform]. An infrastructure-as-code tool to
-  provision Synapse and related resources.
+  The command line interface to [Terraform]. An infrastructure-as-code tool we
+  use to provision Synapse and related resources.
 - [dbt cli] :
   The command line tool for [dbt].
 - [dbt Synapse adapter] :
@@ -55,27 +55,27 @@ workspace itself the following resources are created:
   A firewall rule with your IP address, so that you can access the SQL server.
 - keyvault : 
   In the keyvault the sql administrator password is kept. Look for the
-  ~synapse-sql-adminstrator-password~ secret. The login name is ~sqladminuser~.
+  `synapse-sql-adminstrator-password` secret. The login name is `sqladminuser`.
 
-For a more detailed overview of what is created see [here](terraform/main.tf).
+For a more detailed overview of what is created, see [here](terraform/main.tf).
 
-The first to do with Terraform is running `init`.
+The first we initialize Terraform with `init`:
 
 ``` bash
 terraform -chdir=terraform/ init
 ```
 
-After that we run `plan` to see which resources will be created. You can change
+After that, we run `plan` to see which resources will be created. You can change
 the `resource_group_name` and `resource_group_location` to your liking:
 
 ``` bash
 terraform -chdir=terraform/ plan \
-  -var="resource_group_name=dbt-synapse-demo"  \ 
+  -var="resource_group_name=dbt-synapse-demo" \ 
   -var="resource_group_location=westeurope" \
   -out terraform.tfplan
 ```
 
-Finally, to create the all resources we run `apply`:
+Finally, to create all resources we run `apply`:
 
 ```bash
 terraform -chdir=terraform/ apply terraform.tfplan
@@ -122,7 +122,7 @@ sed -i -e \
   profiles.yml
 ```
 
-Check if your set up is working correctly:
+Check if your set-up is working correctly:
 
 ``` bash
 dbt debug \
@@ -130,7 +130,7 @@ dbt debug \
   --profiles-dir .
 ```
 
-All responses should show `OK`. You should be able to perform you first dbt run
+All responses should show `OK`. You should be able to perform your first dbt run
 with:
 
 ``` bash
@@ -143,7 +143,7 @@ For the rest of the tutorial refer to [this page](https://docs.getdbt.com/tutori
 
 # Clean up
 
-When you are done with the dem0, you can clean up the resources with:
+When you are done with the demo, you can clean up the resources with:
 
 ```bash
 terraform -chdir=terraform/ plan \
@@ -155,10 +155,10 @@ terraform -chdir=terraform/ plan \
 terraform -chdir=terraform/ apply terraform.tfplan
 ```
 
-**NOTE: the SQL dedicated pool will still be invoiced even if you do not use
-it!**
+NOTE: you pay for a dedicated pool even if you do not use it. The smallest size
+is chosen in this demo repo 'DW100C'.
 
-[Azure cli]: (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli "Azure cli"
+[Azure cli]: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli "Azure cli"
 [Azure cloud]: https://azure.microsoft.com/en-us/ "Azure cloud"
 [Azure Synapse Analytics]: https://azure.microsoft.com/en-us/services/synapse-analytics/ "Azure Synapse Analytics"
 [dbt]: https://www.getdbt.com/ "data build tool"
