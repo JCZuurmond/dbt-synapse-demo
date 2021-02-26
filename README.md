@@ -139,7 +139,7 @@ dbt run \
   --profiles-dir .
 ```
 
-For the rest of the tutorial refer to [this page](https://docs.getdbt.com/tutorial/create-a-project-dbt-cli#perform-your-first-dbt-run).
+For the remainder of the tutorial refer to [this page](https://docs.getdbt.com/tutorial/create-a-project-dbt-cli#perform-your-first-dbt-run).
 
 # Clean up
 
