@@ -109,7 +109,7 @@ resource "azurerm_synapse_firewall_rule" "synapse" {
 }
 
 resource "azurerm_synapse_sql_pool" "synapse" {
-  name                 = "dedicatedpool"
+  name                 = "demo"
   synapse_workspace_id = azurerm_synapse_workspace.synapse.id
   sku_name             = "DW100c"
   create_mode          = "Default"

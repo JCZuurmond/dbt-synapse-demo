@@ -6,6 +6,6 @@ default:
       driver: 'ODBC Driver 17 for SQL Server'
       server: SYNAPSE_SQL_SERVER
       port: 1433
-      database: master
+      database: demo
       schema: dbt
       authentication: CLI
