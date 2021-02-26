@@ -1,4 +1,9 @@
-# DBT Synapse Demo
+# Data Build Tool Azure Synapse Analytics Demo
+
+This repository demos how to use data build tool (dbt) with Azure Synapse
+Analytics. In this repository we recreate the
+[`jaffle-shop`](https://docs.getdbt.com/tutorial/setting-up) tutorial with
+Synapse as backend.
 
 ## Infrastructure
 
