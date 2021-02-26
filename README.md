@@ -158,8 +158,6 @@ terraform -chdir=terraform/ apply terraform.tfplan
 **NOTE: the SQL dedicated pool will still be invoiced even if you do not use
 it!**
 
-# Sources
-
 [Azure cli]: (https://docs.microsoft.com/en-us/cli/azure/install-azure-cli "Azure cli"
 [Azure cloud]: https://azure.microsoft.com/en-us/ "Azure cloud"
 [Azure Synapse Analytics]: https://azure.microsoft.com/en-us/services/synapse-analytics/ "Azure Synapse Analytics"
