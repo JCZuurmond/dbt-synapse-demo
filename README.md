@@ -28,4 +28,16 @@ Finally, run `apply` to create the resources.
 terraform -chdir=terraform/ apply terraform.tfplan
 ```
 
+### Clean up
 
+When you are done with this demo repo, you can clean up the resources with:
+
+```bash
+terraform -chdir=terraform/ plan \
+  -destroy \
+  -var="resource_group_name=dbt-synapse-demo"  \ 
+  -var="resource_group_location=westeurope" \
+  -out terraform.tfplan
+
+terraform -chdir=terraform/ apply terraform.tfplan
+```
