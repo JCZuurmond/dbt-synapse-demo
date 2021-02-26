@@ -4,7 +4,7 @@ default:
     dev:
       type: synapse
       driver: 'ODBC Driver 17 for SQL Server'
-      server: SYNAPSE_SQL_ON_DEMAND_SERVER
+      server: SYNAPSE_SQL_SERVER
       port: 1433
       database: master
       schema: dbt

@@ -57,25 +57,25 @@ default:
     dev:
       type: sqlserver
       driver: 'ODBC Driver 17 for SQL Server'
-      server: SYNAPSE_SQL_ON_DEMAND_SERVER
+      server: SYNAPSE_SQL_SERVER
       port: 1433
       database: master
       schema: dbt
       authentication: CLI
 ```
 
-Replace `SYNAPSE_SQL_ON_DEMAND_SERVER` with the server name of the default SQL
+Replace `SYNAPSE_SQL_SERVER` with the server name of the default SQL
 on demand created with the Synapse work space. It can be easily retrieved with:
 
 ``` bash
-terraform -chdir=terraform/ output synapse_sql_on_demand_server
+terraform -chdir=terraform/ output synapse_sql_server
 ```
 
 Or, if you like to stay on the command line, run:
 
 ``` bash
 sed -i -e \
-  s/SYNAPSE_SQL_ON_DEMAND_SERVER/$(terraform -chdir=terraform/ output synapse_sql_on_demand_server)/g \
+  s/SYNAPSE_SQL_SERVER/$(terraform -chdir=terraform/ output synapse_sql_server)/g \
   profiles.yml
 ```
 
