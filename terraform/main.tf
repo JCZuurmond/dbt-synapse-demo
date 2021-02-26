@@ -47,11 +47,11 @@ resource "random_string" "storage_account_name_suffix" {
 
   length = 4
   lower  = true
-  upper = false
+  upper  = false
 }
 
 resource "azurerm_storage_account" "synapse" {
-  name                     = "${lower(replace(azurerm_resource_group.synapse.name, " ", ""))}${random_string.storage_account_name_suffix.result}"
+  name                     = "${lower(replace(replace(azurerm_resource_group.synapse.name, " ", ""), "-", ""))}${random_string.storage_account_name_suffix.result}"
   resource_group_name      = azurerm_resource_group.synapse.name
   location                 = azurerm_resource_group.synapse.location
   account_tier             = "Standard"
@@ -83,7 +83,7 @@ resource "azurerm_key_vault_secret" "synapse" {
 }
 
 resource "azurerm_synapse_workspace" "synapse" {
-  name                                 = "synapse"
+  name                                 = azurerm_resource_group.synapse.name
   resource_group_name                  = azurerm_resource_group.synapse.name
   location                             = azurerm_resource_group.synapse.location
   storage_data_lake_gen2_filesystem_id = azurerm_storage_data_lake_gen2_filesystem.synapse.id
