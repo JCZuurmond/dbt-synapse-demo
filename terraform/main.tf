@@ -107,3 +107,10 @@ resource "azurerm_synapse_firewall_rule" "synapse" {
   start_ip_address     = "${chomp(data.http.client_ip.body)}"
   end_ip_address       = "${chomp(data.http.client_ip.body)}"
 }
+
+resource "azurerm_synapse_sql_pool" "synapse" {
+  name                 = "dedicatedpool"
+  synapse_workspace_id = azurerm_synapse_workspace.synapse.id
+  sku_name             = "DW100c"
+  create_mode          = "Default"
+}
