@@ -35,7 +35,8 @@ resource "azurerm_key_vault" "synapse" {
     secret_permissions = [
       "Get",
       "List",
-      "Set"
+      "Set",
+      "Delete"
     ]
   }
 }
