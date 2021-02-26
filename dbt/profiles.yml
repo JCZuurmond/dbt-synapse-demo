@@ -1,0 +1,11 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: SYNAPSE_SQL_ON_DEMAND_SERVER
+      port: 1433
+      database: master
+      schema: dbt
+      authentication: CLI
