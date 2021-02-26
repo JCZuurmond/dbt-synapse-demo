@@ -1,3 +1,5 @@
 .terraform.lock.hcl
 *.tfplan
 jaffle-shop/
+.user.yml
+profiles.yml-e
