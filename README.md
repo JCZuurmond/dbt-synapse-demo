@@ -153,7 +153,7 @@ terraform -chdir=terraform/ plan \
   -out terraform.tfplan
 
 terraform -chdir=terraform/ apply terraform.tfplan
-``**
+```
 
 **NOTE: the SQL dedicated pool will still be invoiced even if you do not use
 it!**
