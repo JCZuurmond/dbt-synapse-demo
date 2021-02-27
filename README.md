@@ -185,7 +185,7 @@ terraform -chdir=terraform/ apply terraform.tfplan
 ```
 
 NOTE: you pay for a dedicated pool even if you do not use it. The smallest size
-is chosen in this demo repo 'DW100C'.
+is chosen: 'DW100C'.
 
 [Azure cli]: https://docs.microsoft.com/en-us/cli/azure/install-azure-cli "Azure cli"
 [Azure cloud]: https://azure.microsoft.com/en-us/ "Azure cloud"
