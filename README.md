@@ -46,9 +46,6 @@ Before we start, make sure you are logged in:
 
 ``` bash
 az login     # opens a browser with login page
-```
-
-``` bash
 az account set --subscription <subscription id>
 ```
 
