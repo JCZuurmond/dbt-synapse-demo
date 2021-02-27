@@ -42,7 +42,7 @@ $ source venv/bin/activate
 
 # Login to Azure
 
-Before we start make sure you are logged in:
+Before we start, make sure you are logged in:
 
 ``` bash
 az login     # opens a browser with login page
