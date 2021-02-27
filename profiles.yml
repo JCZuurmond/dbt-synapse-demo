@@ -2,10 +2,10 @@ default:
   target: dev
   outputs:
     dev:
-      type: synapse
-      driver: 'ODBC Driver 17 for SQL Server'
-      server: SYNAPSE_SQL_SERVER
-      port: 1433
-      database: demo
-      schema: dbt
-      authentication: CLI
+      type: synapse                             # `dbt-synapse` adapter
+      driver: 'ODBC Driver 17 for SQL Server'   # Micrsoft ODBC driver
+      server: SYNAPSE_SQL_SERVER                # Synapse sql server address
+      port: 1433                                # (default) port for the server
+      database: demo                            # the sql pool name
+      schema: dbt                               # up to you
+      authentication: CLI                       # authentication to Synapse is done with the Azure cli

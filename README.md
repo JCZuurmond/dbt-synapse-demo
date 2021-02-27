@@ -8,7 +8,8 @@ Synapse data warehouse as backend.
 
 [Azure Synapse Analytics] is a data warehouse service on the [Azure cloud]. You
 should have an Azure account to use Synapse. If you do not have an Azure
-account, you can create one for [free](https://azure.microsoft.com/en-us/free/).
+account, you can create one with some [free
+credit](https://azure.microsoft.com/en-us/free/) to try [Azure cloud] with.
 
 Everything in this repository is ran from the command line. We expect some basic
 knowledge about using the command line. The following tools are used, follow
@@ -61,8 +62,8 @@ For more info, see [this page](https://registry.terraform.io/providers/hashicorp
 
 # Create a Synapse workspace with Terraform
 
-We use [Terraform] to create a [Azure Synapse Analytics] workspace. Besides the
-workspace itself the following resources are created:
+We use [Terraform] to create an [Azure Synapse Analytics] workspace. With the
+workspace the following resources are created:
 
 - resource group :
   All resources related to this demo are kept in this resource group.
@@ -70,7 +71,7 @@ workspace itself the following resources are created:
   The [Azure Synapse Analytics] workspace.
 - dedicated SQL pool : 
   A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not
-  use it. The smallest size is chosen in this demo repo 'DW100C'.**
+  use it. The smallest size is chosen: 'DW100C'.**
 - storage account with data lake gen2 file system:
   A (hierarchical namespace) storage account associated with the Synapse
   workspace.
@@ -83,7 +84,7 @@ workspace itself the following resources are created:
 
 For a more detailed overview of what is created, see [here](terraform/main.tf).
 
-The first we initialize Terraform with the `init` command:
+First, we initialize Terraform with the `init` command:
 
 ``` bash
 terraform -chdir=terraform/ init
@@ -105,6 +106,9 @@ Finally, to create all resources we run `apply`:
 terraform -chdir=terraform/ apply terraform.tfplan
 ```
 
+This command will take a couple minutes to create [Azure Synapse Analytics] and its related
+resources.
+
 # Jaffle shop with data built tool (dbt)
 
 This repository uses the [jaffle shop] tutorial which is part of dbt. The
@@ -122,18 +126,18 @@ default:
   target: dev
   outputs:
     dev:
-      type: sqlserver
-      driver: 'ODBC Driver 17 for SQL Server'
-      server: SYNAPSE_SQL_SERVER
-      port: 1433
-      database: master
-      schema: dbt
-      authentication: CLI
+      type: synapse                             # `dbt-synapse` adapter
+      driver: 'ODBC Driver 17 for SQL Server'   # Micrsoft ODBC driver
+      server: SYNAPSE_SQL_SERVER                # Synapse sql server address
+      port: 1433                                # (default) port for the server
+      database: demo                            # the sql pool name
+      schema: dbt                               # up to you
+      authentication: CLI                       # authentication to Synapse is done with the Azure cli
 ```
 
-Replace `SYNAPSE_SQL_SERVER` with the server name of the dedicated SQL server
-which we provisioned with Terraform. The serve name can be easily retrieved
-with:
+Replace `SYNAPSE_SQL_SERVER` with the server name of the dedicated SQL server,
+which we provisioned with [Terraform]. The [serve name](terraform/output.tf) can
+be retrieved with:
 
 ``` bash
 terraform -chdir=terraform/ output synapse_sql_server
