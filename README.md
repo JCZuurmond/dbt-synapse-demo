@@ -1,4 +1,4 @@
-# Data Build Tool Azure Synapse Analytics Demo
+# Demo: Data Build Tool with Azure Synapse Analytics 
 
 This repository demos how to use data build tool ([dbt]) with [Azure Synapse
 Analytics]. In this repository we recreate the [jaffle shop] tutorial with a
@@ -6,12 +6,13 @@ Synapse data warehouse as backend.
 
 # Prerequisites and installation overview
 
-[Azure Synapse Analytics] is a data warehouse service on the [Azure cloud]. We expect you
-to have an Azure account. If not, you can create one for [free](https://azure.microsoft.com/en-us/free/).
+[Azure Synapse Analytics] is a data warehouse service on the [Azure cloud]. You
+should have an Azure account to use Synapse. If you do not have an Azure
+account, you can create one for [free](https://azure.microsoft.com/en-us/free/).
 
 Everything in this repository is ran from the command line. We expect some basic
 knowledge about using the command line. The following tools are used, follow
-links for installation instructions:
+the links for installation instructions:
 
 - [ODBC driver] :
   The Microsoft ODBC driver is used to connect to SQL server (part of Synapse).
@@ -25,6 +26,19 @@ links for installation instructions:
 - [dbt Synapse adapter] :
   A [dbt] adapter for [Azure Synapse Analytics].
 
+## Installing dbt
+
+The [dbt cli] and the [dbt Synapse adapter] are Python packages, which are
+(`pip`) installed from [PyPi](https://pypi.org). It is recommend to install
+these packages in a [virtual
+environment](https://docs.python.org/3/library/venv.html) like so:
+
+``` bash
+$ python -m venv venv/
+$ source venv/bin/activate
+(venv) $ pip install dbt dbt-synapse
+```
+
 # Login to Azure
 
 Before we start make sure you are logged in:
@@ -35,6 +49,12 @@ az login     # opens a browser with login page
 
 ``` bash
 az account set --subscription <subscription id>
+```
+
+The following command might help with finding your subscription id:
+
+``` bash
+az account list --query "[].{name:name, subscriptionId:id}"
 ```
 
 For more info, see [this page](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/guides/azure_cli).
@@ -52,16 +72,18 @@ workspace itself the following resources are created:
   A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not
   use it. The smallest size is chosen in this demo repo 'DW100C'.**
 - storage account with data lake gen2 file system:
-  A (hierarchical namespace) storage account associated with the workspace.
+  A (hierarchical namespace) storage account associated with the Synapse
+  workspace.
 - firewall rule :
   A firewall rule with your IP address, so that you can access the SQL server.
 - keyvault : 
-  In the keyvault the sql administrator password is kept. Look for the
+  In the keyvault the sql administrator password is kept. It is not used for
+  this demo, but if you are interested: look for the
   `synapse-sql-adminstrator-password` secret. The login name is `sqladminuser`.
 
 For a more detailed overview of what is created, see [here](terraform/main.tf).
 
-The first we initialize Terraform with `init`:
+The first we initialize Terraform with the `init` command:
 
 ``` bash
 terraform -chdir=terraform/ init
@@ -109,8 +131,9 @@ default:
       authentication: CLI
 ```
 
-Replace `SYNAPSE_SQL_SERVER` with the server name of the dedicated SQL server we 
-provisioned with Terraform. The serve name can be easily retrieved with:
+Replace `SYNAPSE_SQL_SERVER` with the server name of the dedicated SQL server
+which we provisioned with Terraform. The serve name can be easily retrieved
+with:
 
 ``` bash
 terraform -chdir=terraform/ output synapse_sql_server
