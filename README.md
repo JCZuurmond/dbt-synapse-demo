@@ -32,7 +32,7 @@ the links for installation instructions:
 The [dbt cli] and the [dbt Synapse adapter] are Python packages, which are
 (`pip`) installed from [PyPi](https://pypi.org). It is recommend to install
 these packages in a [virtual
-environment](https://docs.python.org/3/library/venv.html) like so:
+environment](https://docs.python.org/3/library/venv.html), like so:
 
 ``` bash
 $ python -m venv venv/
