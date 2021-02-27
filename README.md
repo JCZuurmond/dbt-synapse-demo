@@ -13,6 +13,8 @@ Everything in this repository is ran from the command line. We expect some basic
 knowledge about using the command line. The following tools are used, follow
 links for installation instructions:
 
+- [ODBC driver] :
+  The Microsoft ODBC driver is used to connect to SQL server (part of Synapse).
 - [Azure cli] : 
   The command line interface for the [Azure cloud].
 - [Terraform cli] : 
@@ -165,5 +167,6 @@ is chosen in this demo repo 'DW100C'.
 [dbt cli]: https://docs.getdbt.com/dbt-cli/installation/ "dbt cli"
 [dbt Synapse adapter]: https://github.com/dbt-msft/dbt-synapse "dbt Synapse adapter"
 [jaffle shop]: https://docs.getdbt.com/tutorial/setting-up "Jaffle Shop"
+[ODBC driver]: https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15 "Microsoft ODBC Driver"
 [Terraform]: https://www.terraform.io/ "Terraform"
 [Terraform cli]: https://learn.hashicorp.com/tutorials/terraform/install-cli "Terraform cli"
