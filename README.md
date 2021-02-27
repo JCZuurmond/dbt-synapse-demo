@@ -59,25 +59,17 @@ For more info, see [this page](https://registry.terraform.io/providers/hashicorp
 
 # Create a Synapse workspace with Terraform
 
-We use [Terraform] to create an [Azure Synapse Analytics] workspace. With the
-workspace the following resources are created:
+We use [Terraform] to create an [Azure Synapse Analytics] workspace. The
+following resources are created:
 
-- resource group :
-  All resources related to this demo are kept in this resource group.
-- [Azure Synapse Analytics] workspace :
-  The [Azure Synapse Analytics] workspace.
-- dedicated SQL pool : 
-  A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not
-  use it. The smallest size is chosen: 'DW100C'.**
-- storage account with data lake gen2 file system:
-  A (hierarchical namespace) storage account associated with the Synapse
-  workspace.
-- firewall rule :
-  A firewall rule with your IP address, so that you can access the SQL server.
-- keyvault : 
-  In the keyvault the sql administrator password is kept. It is not used for
-  this demo, but if you are interested: look for the
-  `synapse-sql-adminstrator-password` secret. The login name is `sqladminuser`.
+resource                                        | description
+-----------------------------------------------------------------------------------
+resource group                                  | All resources related to this demo are kept in this resource group.
+[Azure Synapse Analytics] workspace             | The [Azure Synapse Analytics] workspace.
+dedicated SQL pool                              | A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not use it. The smallest size is chosen: 'DW100C'.**
+storage account with data lake gen2 file system | A (hierarchical namespace) storage account associated with the Synapse workspace.
+firewall rule                                   | A firewall rule with your IP address, so that you can access the SQL server.
+keyvault                                        | In the keyvault the sql administrator password is kept. It is not used for this demo, but if you are interested: look for the `synapse-sql-adminstrator-password` secret. The login name is `sqladminuser`.
 
 For a more detailed overview of what is created, see [here](terraform/main.tf).
 
