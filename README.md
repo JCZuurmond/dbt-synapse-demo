@@ -23,7 +23,7 @@ the links for installation instructions:
   The command line interface to [Terraform]. An infrastructure-as-code tool we
   use to provision Synapse and related resources.
 - [dbt cli] :
-  The command line tool for [dbt].
+  The command line interface for [dbt].
 - [dbt Synapse adapter] :
   A [dbt] adapter for [Azure Synapse Analytics].
 
@@ -65,7 +65,7 @@ following resources are created:
 resource                                        | description
 ------------------------------------------------|----------------------------------
 resource group                                  | All resources related to this demo are kept in this resource group.
-[Azure Synapse Analytics] workspace             | The [Azure Synapse Analytics] workspace.
+Synapse workspace                               | The [Azure Synapse Analytics] workspace.
 dedicated SQL pool                              | A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not use it. The smallest size is chosen: 'DW100C'.**
 storage account with data lake gen2 file system | A (hierarchical namespace) storage account associated with the Synapse workspace.
 firewall rule                                   | A firewall rule with your IP address, so that you can access the SQL server.
@@ -95,8 +95,8 @@ Finally, to create all resources we run `apply`:
 terraform -chdir=terraform/ apply terraform.tfplan
 ```
 
-This command will take a couple minutes to create [Azure Synapse Analytics] and its related
-resources.
+This command will take a couple minutes to create an [Azure Synapse Analytics]
+and its related resources.
 
 # Jaffle shop with data built tool (dbt)
 
