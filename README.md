@@ -63,7 +63,7 @@ We use [Terraform] to create an [Azure Synapse Analytics] workspace. The
 following resources are created:
 
 resource                                        | description
------------------------------------------------------------------------------------
+------------------------------------------------|----------------------------------
 resource group                                  | All resources related to this demo are kept in this resource group.
 [Azure Synapse Analytics] workspace             | The [Azure Synapse Analytics] workspace.
 dedicated SQL pool                              | A dedicated SQL pool. **NOTE: you pay for a dedicated pool even if you do not use it. The smallest size is chosen: 'DW100C'.**
